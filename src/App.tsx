@@ -42,7 +42,7 @@ function Header() {
     <header
       className="sticky top-0 z-40 border-b border-original-border/60 backdrop-blur-md"
       style={{ backgroundColor: "rgba(250, 247, 242, 0.85)" }}
-    >
+    > 
       <div className="container-oc flex items-center justify-between py-4">
         <a href="#top" className="flex items-center gap-3">
           <img src="/src/assets/oj-logo.png" alt="Original Joias Logo" className="h-12 w-auto" />
