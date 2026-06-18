@@ -46,12 +46,6 @@ function Header() {
       <div className="container-oc flex items-center justify-between py-4">
         <a href="#top" className="flex items-center gap-3">
           <img src="/src/assets/oj-logo.png" alt="Original Joias Logo" className="h-12 w-auto" />
-          <div className="flex flex-col leading-none">
-            <span className="font-display text-2xl font-semibold tracking-tight">Original Club</span>
-            <span className="text-[0.7rem] text-original-muted tracking-wider uppercase mt-0.5">
-              by Original Joias
-            </span>
-          </div>
         </a>
         <nav role="navigation" className="hidden md:flex items-center gap-8 text-sm font-medium">
           <a href="#como-funciona" className="hover:text-original-gold transition-colors">Como funciona</a>
@@ -644,8 +638,7 @@ function Footer() {
             <div className="flex items-center gap-3 mb-4">
               <img src="/src/assets/oj-logo.png" alt="Original Joias Logo" className="h-12 w-auto" />
               <div>
-                <div className="font-display text-2xl text-white font-semibold">Original Club</div>
-                <div className="text-xs uppercase tracking-widest text-original-gold">by Original Joias</div>
+                
               </div>
             </div>
             <p className="text-sm leading-relaxed">
