@@ -1,7 +1,8 @@
 import { useEffect, useState, type ReactNode, type FormEvent } from "react";
 
-const WHATSAPP_NUMBER = "5500000000000"; // [DADO A CONFIRMAR]
+const WHATSAPP_NUMBER = import.meta.env.VITE_WHATSAPP_NUMBER || "5500000000000";
 const WHATSAPP_MSG =
+  import.meta.env.VITE_WHATSAPP_MESSAGE ||
   "Olá! Vim pela Landing Page do Original Club e quero saber mais sobre os planos de assinatura de semijoias. Pode me ajudar a escolher o melhor plano para o meu perfil?";
 
 const waLink = (msg = WHATSAPP_MSG) =>
@@ -9,7 +10,7 @@ const waLink = (msg = WHATSAPP_MSG) =>
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-original-bg text-original-text">
+    <div className="min-h-screen bg-oc-bg text-oc-text">
       <Header />
       <main role="main">
         <Hero />
@@ -25,7 +26,6 @@ export default function App() {
         <Objections />
         <OfferSection />
         <FAQSection />
-        <FinalCTA />
         <SignupForm />
       </main>
       <Footer />
@@ -40,18 +40,21 @@ export default function App() {
 function Header() {
   return (
     <header
-      className="sticky top-0 z-40 border-b border-original-border/60 backdrop-blur-md"
-      style={{ backgroundColor: "rgba(250, 247, 242, 0.85)" }}
-    > 
+      className="sticky top-0 z-40 border-b border-oc-border/60 backdrop-blur-md"
+      style={{ backgroundColor: "rgba(31, 26, 23, 0.9)" }}
+    >
       <div className="container-oc flex items-center justify-between py-4">
-        <a href="#top" className="flex items-center gap-3">
-          <img src="/logo.png" alt="Logo" />
+        <a href="#top" className="flex flex-col leading-none">
+          <span className="font-display text-2xl font-semibold tracking-tight">Original Club</span>
+          <span className="text-[0.7rem] text-oc-muted tracking-wider uppercase mt-0.5">
+            by Original Joias
+          </span>
         </a>
         <nav role="navigation" className="hidden md:flex items-center gap-8 text-sm font-medium">
-          <a href="#como-funciona" className="hover:text-original-gold transition-colors">Como funciona</a>
-          <a href="#planos" className="hover:text-original-gold transition-colors">Planos</a>
-          <a href="#curadoria" className="hover:text-original-gold transition-colors">Curadoria</a>
-          <a href="#faq" className="hover:text-original-gold transition-colors">FAQ</a>
+          <a href="#como-funciona" className="hover:text-oc-gold transition-colors">Como funciona</a>
+          <a href="#planos" className="hover:text-oc-gold transition-colors">Planos</a>
+          <a href="#curadoria" className="hover:text-oc-gold transition-colors">Curadoria</a>
+          <a href="#faq" className="hover:text-oc-gold transition-colors">FAQ</a>
         </nav>
         <a href="#planos" className="btn-gold !py-2.5 !px-5 !text-sm hidden sm:inline-flex">
           Quero assinar
@@ -67,26 +70,26 @@ function Hero() {
     <section id="top" className="relative overflow-hidden" style={{ background: "var(--gradient-hero)" }}>
       <div aria-hidden className="absolute inset-0 pointer-events-none">
         <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full opacity-30"
-          style={{ background: "radial-gradient(circle, #B88A44 0%, transparent 65%)" }} />
+          style={{ background: "radial-gradient(circle, #C9A05A 0%, transparent 65%)" }} />
         <div className="absolute -bottom-40 -left-20 w-[28rem] h-[28rem] rounded-full opacity-20"
-          style={{ background: "radial-gradient(circle, #B88A44 0%, transparent 65%)" }} />
+          style={{ background: "radial-gradient(circle, #C9A05A 0%, transparent 65%)" }} />
       </div>
       <div className="container-oc relative grid lg:grid-cols-[1.1fr_1fr] gap-12 lg:gap-16 items-center py-20 md:py-28">
         <div>
-          <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-original-gold font-semibold mb-6">
-            <span className="w-8 h-px bg-original-gold" /> Clube de assinatura premium
+          <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-oc-gold font-semibold mb-6">
+            <span className="w-8 h-px bg-oc-gold" /> Clube de assinatura premium
           </span>
           <h1 className="font-display font-semibold leading-[0.95] tracking-tight"
             style={{ fontSize: "clamp(2.4rem, 6vw, 5.2rem)" }}>
             Descubra<br />
-            <span className="italic text-original-gold">semijoias exclusivas</span><br />
+            <span className="italic text-oc-gold">semijoias exclusivas</span><br />
             todo mês
           </h1>
-          <p className="mt-7 text-lg md:text-xl text-original-muted leading-relaxed max-w-xl">
+          <p className="mt-7 text-lg md:text-xl text-oc-muted leading-relaxed max-w-xl">
             Assine o Original Club e receba semijoias premium direto da fábrica, escolhidas
             de acordo com seu estilo, acabamento preferido e perfil de uso.
           </p>
-          <p className="mt-3 text-base text-original-muted leading-relaxed max-w-xl">
+          <p className="mt-3 text-base text-oc-muted leading-relaxed max-w-xl">
             Uma experiência mensal de curadoria, exclusividade e pertencimento para mulheres
             que valorizam beleza, qualidade e peças com origem.
           </p>
@@ -104,35 +107,31 @@ function Hero() {
 function HeroVisual() {
   return (
     <div className="relative aspect-square max-w-md mx-auto w-full">
-      <div className="absolute inset-0 rounded-[2rem] bg-original-card shadow-[0_30px_60px_-20px_rgba(31,26,23,0.25)] overflow-hidden border border-original-border">
+      <div className="absolute inset-0 rounded-[2rem] bg-oc-card shadow-[0_30px_60px_-20px_rgba(0,0,0,0.5)] overflow-hidden border border-oc-border">
         <div className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />
         <svg viewBox="0 0 400 400" className="absolute inset-0 w-full h-full" aria-hidden>
           <defs>
             <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stopColor="#D4A968" />
+              <stop offset="0" stopColor="#E0B870" />
               <stop offset="1" stopColor="#9C7134" />
             </linearGradient>
           </defs>
-          {/* Box */}
-          <rect x="80" y="180" width="240" height="160" rx="8" fill="#FFFFFF" stroke="#E7DCCF" strokeWidth="2" />
-          <rect x="80" y="170" width="240" height="20" rx="4" fill="#F1E6D8" stroke="#E7DCCF" />
-          {/* Hoop earrings */}
+          <rect x="80" y="180" width="240" height="160" rx="8" fill="#2A2320" stroke="#3D332C" strokeWidth="2" />
+          <rect x="80" y="170" width="240" height="20" rx="4" fill="#3D332C" stroke="#3D332C" />
           <circle cx="160" cy="120" r="42" fill="none" stroke="url(#gold)" strokeWidth="6" />
-          <circle cx="160" cy="78" r="4" fill="#B88A44" />
+          <circle cx="160" cy="78" r="4" fill="#C9A05A" />
           <circle cx="250" cy="135" r="32" fill="none" stroke="url(#gold)" strokeWidth="5" />
-          <circle cx="250" cy="103" r="3.5" fill="#B88A44" />
-          {/* Necklace chain */}
+          <circle cx="250" cy="103" r="3.5" fill="#C9A05A" />
           <path d="M 110 240 Q 200 290 290 240" stroke="url(#gold)" strokeWidth="2.5" fill="none" />
           <circle cx="200" cy="278" r="8" fill="url(#gold)" />
-          {/* Card */}
-          <rect x="120" y="300" width="160" height="28" rx="3" fill="#FAF7F2" stroke="#D8C6B3" />
-          <line x1="135" y1="312" x2="220" y2="312" stroke="#B88A44" strokeWidth="1" />
-          <line x1="135" y1="319" x2="200" y2="319" stroke="#6F6258" strokeWidth="0.8" opacity="0.5" />
+          <rect x="120" y="300" width="160" height="28" rx="3" fill="#1F1A17" stroke="#3D332C" />
+          <line x1="135" y1="312" x2="220" y2="312" stroke="#C9A05A" strokeWidth="1" />
+          <line x1="135" y1="319" x2="200" y2="319" stroke="#B8AA9A" strokeWidth="0.8" opacity="0.5" />
         </svg>
-        <div className="absolute top-4 left-4 text-[0.65rem] uppercase tracking-[0.25em] text-original-gold font-semibold">
+        <div className="absolute top-4 left-4 text-[0.65rem] uppercase tracking-[0.25em] text-oc-gold font-semibold">
           Edição N°01
         </div>
-        <div className="absolute bottom-4 right-4 font-display italic text-original-text/60">
+        <div className="absolute bottom-4 right-4 font-display italic text-oc-text/60">
           Original Club
         </div>
       </div>
@@ -149,12 +148,12 @@ function SocialProofBar() {
     { t: "6 edições colecionáveis", s: "Caixas temáticas bimestrais por ano" },
   ];
   return (
-    <section className="border-y border-original-border bg-original-card/40">
+    <section className="border-y border-oc-border bg-oc-card/40">
       <div className="container-oc grid grid-cols-2 md:grid-cols-4 gap-6 py-8">
         {items.map((i) => (
           <div key={i.t} className="text-center md:text-left">
-            <div className="font-display text-lg md:text-xl font-semibold text-original-text">{i.t}</div>
-            <div className="text-xs md:text-sm text-original-muted mt-1">{i.s}</div>
+            <div className="font-display text-lg md:text-xl font-semibold text-oc-text">{i.t}</div>
+            <div className="text-xs md:text-sm text-oc-muted mt-1">{i.s}</div>
           </div>
         ))}
       </div>
@@ -168,22 +167,14 @@ function ProblemSection() {
     <section className="section-pad">
       <div className="container-oc max-w-3xl">
         <SectionTitle eyebrow="O problema">
-          Quando bonito <span className="italic text-original-gold">não basta</span>
+          Quando bonito <span className="italic text-oc-gold">não basta</span>
         </SectionTitle>
-        <div className="space-y-5 text-lg text-original-muted leading-relaxed">
+        <div className="space-y-5 text-lg text-oc-muted leading-relaxed">
           <p>Você ama semijoias, mas nem sempre encontra peças que realmente combinam com seu estilo.</p>
-          <p>
-            Muitas marcas vendem produtos parecidos, sem origem clara, sem curadoria e sem uma
-            experiência que faça a compra parecer especial.
-          </p>
-          <p>
-            Às vezes você compra uma peça bonita, mas ela não combina com seu dia a dia, não conversa
-            com suas outras joias ou fica esquecida na gaveta.
-          </p>
+          <p>Muitas marcas vendem produtos parecidos, sem origem clara, sem curadoria e sem uma experiência que faça a compra parecer especial.</p>
+          <p>Às vezes você compra uma peça bonita, mas ela não combina com seu dia a dia, não conversa com suas outras joias ou fica esquecida na gaveta.</p>
           <p>E quando encontra algo com qualidade, normalmente precisa pagar mais caro por causa dos intermediários.</p>
-          <p className="text-original-text font-medium">
-            O que falta não é mais uma peça aleatória: é uma curadoria pensada para você.
-          </p>
+          <p className="text-oc-text font-medium">O que falta não é mais uma peça aleatória: é uma curadoria pensada para você.</p>
         </div>
       </div>
     </section>
@@ -193,23 +184,17 @@ function ProblemSection() {
 /* ============ SOLUTION ============ */
 function SolutionSection() {
   return (
-    <section className="section-pad bg-original-card/40 border-y border-original-border">
+    <section className="section-pad bg-oc-card/40 border-y border-oc-border">
       <div className="container-oc grid lg:grid-cols-2 gap-12 items-center">
         <div>
           <SectionTitle eyebrow="A solução">
-            Uma curadoria <span className="italic text-original-gold">pensada para você</span>
+            Uma curadoria <span className="italic text-oc-gold">pensada para você</span>
           </SectionTitle>
-          <div className="space-y-5 text-base md:text-lg text-original-muted leading-relaxed">
+          <div className="space-y-5 text-base md:text-lg text-oc-muted leading-relaxed">
             <p>O Original Club transforma a compra de semijoias em uma experiência mensal personalizada.</p>
-            <p>
-              Você escolhe seu acabamento preferido — ródio branco ou ouro — responde um questionário
-              simples de estilo e passa a receber peças selecionadas para o seu perfil.
-            </p>
-            <p>
-              Cada caixa é montada direto na fábrica, com semijoias premium, cartão de inspiração,
-              garantia e QR Code com bastidores da produção.
-            </p>
-            <p className="text-original-text font-medium">Todo mês, uma nova experiência para usar, colecionar e compartilhar.</p>
+            <p>Você escolhe seu acabamento preferido — ródio branco ou ouro — responde um questionário simples de estilo e passa a receber peças selecionadas para o seu perfil.</p>
+            <p>Cada caixa é montada direto na fábrica, com semijoias premium, cartão de inspiração, garantia e QR Code com bastidores da produção.</p>
+            <p className="text-oc-text font-medium">Todo mês, uma nova experiência para usar, colecionar e compartilhar.</p>
           </div>
         </div>
         <div className="grid grid-cols-2 gap-4">
@@ -239,17 +224,17 @@ function BenefitsSection() {
     <section className="section-pad">
       <div className="container-oc">
         <div className="max-w-2xl mb-14">
-          <SectionTitle eyebrow="Benefícios">Por que assinar o <span className="italic text-original-gold">Original Club</span></SectionTitle>
+          <SectionTitle eyebrow="Benefícios">Por que assinar o <span className="italic text-oc-gold">Original Club</span></SectionTitle>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {benefits.map((b, i) => (
             <article key={b.t} className="card-oc">
               <div className="flex items-start justify-between mb-5">
                 <span className="editorial-number !text-4xl">0{i + 1}</span>
-                <div className="text-original-gold">{b.icon}</div>
+                <div className="text-oc-gold">{b.icon}</div>
               </div>
               <h3 className="font-display text-xl font-semibold mb-3 leading-tight">{b.t}</h3>
-              <p className="text-original-muted leading-relaxed text-[0.95rem]">{b.d}</p>
+              <p className="text-oc-muted leading-relaxed text-[0.95rem]">{b.d}</p>
             </article>
           ))}
         </div>
@@ -268,10 +253,10 @@ function HowItWorks() {
     { t: "Avalie sua experiência", d: "Após a entrega, responda uma pesquisa simples para ajudar a melhorar sua curadoria nos próximos envios." },
   ];
   return (
-    <section id="como-funciona" className="section-pad bg-original-card/40 border-y border-original-border">
+    <section id="como-funciona" className="section-pad bg-oc-card/40 border-y border-oc-border">
       <div className="container-oc">
         <div className="max-w-2xl mb-14">
-          <SectionTitle eyebrow="Como funciona">Sua jornada em <span className="italic text-original-gold">5 passos</span></SectionTitle>
+          <SectionTitle eyebrow="Como funciona">Sua jornada em <span className="italic text-oc-gold">5 passos</span></SectionTitle>
         </div>
         <div className="space-y-4">
           {steps.map((s, i) => (
@@ -279,7 +264,7 @@ function HowItWorks() {
               <div className="editorial-number">{String(i + 1).padStart(2, "0")}</div>
               <div>
                 <h3 className="font-display text-xl md:text-2xl font-semibold mb-2">{s.t}</h3>
-                <p className="text-original-muted leading-relaxed">{s.d}</p>
+                <p className="text-oc-muted leading-relaxed">{s.d}</p>
               </div>
             </div>
           ))}
@@ -316,40 +301,40 @@ function ProductsSection() {
       <div className="container-oc">
         <div className="max-w-2xl mb-14">
           <SectionTitle eyebrow="Planos">
-            Escolha o plano que <span className="italic text-original-gold">combina com você</span>
+            Escolha o plano que <span className="italic text-oc-gold">combina com você</span>
           </SectionTitle>
         </div>
         <div className="grid lg:grid-cols-3 gap-6">
           {plans.map((p) => (
             <article
               key={p.name}
-              className={`card-oc relative flex flex-col ${p.popular ? "border-original-gold border-2 !shadow-[0_20px_60px_-15px_rgba(184,138,68,0.35)]" : ""}`}
+              className={`card-oc relative flex flex-col ${p.popular ? "border-oc-gold border-2 !shadow-[0_20px_60px_-15px_rgba(201,160,90,0.45)]" : ""}`}
             >
               {p.popular && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-original-gold text-white text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full">
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-oc-gold text-white text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full">
                   Mais popular
                 </span>
               )}
-              <div className="text-center pb-6 border-b border-original-border">
+              <div className="text-center pb-6 border-b border-oc-border">
                 <h3 className="font-display text-3xl font-semibold">{p.name}</h3>
-                <p className="text-original-muted mt-1 text-sm">{p.pieces}</p>
+                <p className="text-oc-muted mt-1 text-sm">{p.pieces}</p>
                 <div className="mt-5">
-                  <span className="text-sm text-original-muted align-top">R$</span>
-                  <span className="font-display text-6xl font-semibold text-original-gold mx-1">{p.price}</span>
-                  <span className="text-sm text-original-muted">/mês</span>
+                  <span className="text-sm text-oc-muted align-top">R$</span>
+                  <span className="font-display text-6xl font-semibold text-oc-gold mx-1">{p.price}</span>
+                  <span className="text-sm text-oc-muted">/mês</span>
                 </div>
               </div>
-              <p className="text-sm text-original-muted leading-relaxed my-6">{p.desc}</p>
+              <p className="text-sm text-oc-muted leading-relaxed my-6">{p.desc}</p>
               <ul className="space-y-3 mb-6 flex-1">
                 {p.features.map((f) => (
                   <li key={f} className="flex items-start gap-3 text-sm">
-                    <span className="text-original-gold mt-0.5">◆</span>
+                    <span className="text-oc-gold mt-0.5">◆</span>
                     <span>{f}</span>
                   </li>
                 ))}
               </ul>
-              <div className="text-xs italic text-original-muted border-t border-original-border pt-4 mb-5">
-                <strong className="not-italic text-original-text">Resultado esperado: </strong>{p.result}
+              <div className="text-xs italic text-oc-muted border-t border-oc-border pt-4 mb-5">
+                <strong className="not-italic text-oc-text">Resultado esperado: </strong>{p.result}
               </div>
               <a
                 href={waLink(`Olá! Quero assinar o Plano ${p.name} do Original Club (${p.pieces}, R$ ${p.price}/mês).`)}
@@ -375,11 +360,11 @@ function CuratorshipProfiles() {
     { t: "Bold", d: "Peças com presença, personalidade e estilo marcante.", p: "Argolas médias e grandes, colares estruturados, brincos compridos e semijoias que chamam atenção com elegância." },
   ];
   return (
-    <section id="curadoria" className="section-pad bg-original-card/40 border-y border-original-border">
+    <section id="curadoria" className="section-pad bg-oc-card/40 border-y border-oc-border">
       <div className="container-oc">
         <div className="max-w-2xl mb-14">
           <SectionTitle eyebrow="Perfis de curadoria">
-            Descubra o seu <span className="italic text-original-gold">estilo</span>
+            Descubra o seu <span className="italic text-oc-gold">estilo</span>
           </SectionTitle>
         </div>
         <div className="grid md:grid-cols-3 gap-6">
@@ -387,8 +372,8 @@ function CuratorshipProfiles() {
             <article key={p.t} className="card-oc text-center">
               <div className="editorial-number mb-4">0{i + 1}</div>
               <h3 className="font-display text-2xl font-semibold mb-3">{p.t}</h3>
-              <p className="text-original-text mb-4 italic">{p.d}</p>
-              <p className="text-sm text-original-muted leading-relaxed">{p.p}</p>
+              <p className="text-oc-text mb-4 italic">{p.d}</p>
+              <p className="text-sm text-oc-muted leading-relaxed">{p.p}</p>
             </article>
           ))}
         </div>
@@ -405,23 +390,23 @@ function Testimonials() {
       <div className="container-oc">
         <div className="max-w-2xl mb-14">
           <SectionTitle eyebrow="Depoimentos">
-            Quem já vive a <span className="italic text-original-gold">experiência Original</span>
+            Quem já vive a <span className="italic text-oc-gold">experiência Original</span>
           </SectionTitle>
         </div>
         <div className="grid md:grid-cols-3 gap-6">
           {items.map((i) => (
             <article key={i} className="card-oc">
               <div className="flex items-center gap-4 mb-4">
-                <div className="w-16 h-16 rounded-full bg-original-border flex items-center justify-center text-original-muted text-xs">
+                <div className="w-16 h-16 rounded-full bg-oc-border flex items-center justify-center text-oc-muted text-xs">
                   Foto
                 </div>
                 <div>
                   <div className="font-semibold">[NOME DA CLIENTE]</div>
-                  <div className="text-xs text-original-muted">[PERFIL DA ASSINANTE]</div>
+                  <div className="text-xs text-oc-muted">[PERFIL DA ASSINANTE]</div>
                 </div>
               </div>
-              <div className="text-original-gold mb-3" aria-label="5 estrelas">★★★★★</div>
-              <p className="text-sm text-original-muted italic leading-relaxed">[DEPOIMENTO REAL A INSERIR]</p>
+              <div className="text-oc-gold mb-3" aria-label="5 estrelas">★★★★★</div>
+              <p className="text-sm text-oc-muted italic leading-relaxed">[DEPOIMENTO REAL A INSERIR]</p>
             </article>
           ))}
         </div>
@@ -439,11 +424,11 @@ function Differentials() {
     { t: "Acabamento à sua escolha", d: "Ródio branco ou ouro, em todos os planos." },
   ];
   return (
-    <section className="section-pad bg-original-card/40 border-y border-original-border">
+    <section className="section-pad bg-oc-card/40 border-y border-oc-border">
       <div className="container-oc">
         <div className="max-w-2xl mb-14">
           <SectionTitle eyebrow="Diferenciais">
-            O que torna o Original Club <span className="italic text-original-gold">único</span>
+            O que torna o Original Club <span className="italic text-oc-gold">único</span>
           </SectionTitle>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -451,7 +436,7 @@ function Differentials() {
             <div key={d.t} className="card-oc">
               <div className="editorial-number !text-3xl mb-3">0{i + 1}</div>
               <h3 className="font-display text-lg font-semibold mb-2">{d.t}</h3>
-              <p className="text-sm text-original-muted leading-relaxed">{d.d}</p>
+              <p className="text-sm text-oc-muted leading-relaxed">{d.d}</p>
             </div>
           ))}
         </div>
@@ -472,7 +457,7 @@ function Objections() {
       <div className="container-oc max-w-4xl">
         <div className="mb-14">
           <SectionTitle eyebrow="Suas dúvidas">
-            Respondemos com <span className="italic text-original-gold">transparência</span>
+            Respondemos com <span className="italic text-oc-gold">transparência</span>
           </SectionTitle>
         </div>
         <div className="space-y-5">
@@ -482,7 +467,7 @@ function Objections() {
                 <div className="editorial-number !text-3xl">0{i + 1}</div>
                 <div>
                   <h3 className="font-display text-xl font-semibold mb-2">{o.q}</h3>
-                  <p className="text-original-muted leading-relaxed">{o.a}</p>
+                  <p className="text-oc-muted leading-relaxed">{o.a}</p>
                 </div>
               </div>
             </div>
@@ -493,20 +478,20 @@ function Objections() {
   );
 }
 
-/* ============ OFFER / FINAL CTA ============ */
+/* ============ OFFER ============ */
 function OfferSection() {
   return (
-    <section className="section-pad bg-original-text text-white relative overflow-hidden">
+    <section className="section-pad bg-oc-bg text-white relative overflow-hidden">
       <div aria-hidden className="absolute inset-0">
         <div className="absolute top-0 right-0 w-[40rem] h-[40rem] rounded-full opacity-[0.15]"
-          style={{ background: "radial-gradient(circle, #B88A44 0%, transparent 60%)" }} />
+          style={{ background: "radial-gradient(circle, #C9A05A 0%, transparent 60%)" }} />
       </div>
       <div className="container-oc relative text-center max-w-3xl">
-        <span className="text-xs uppercase tracking-[0.3em] text-original-gold font-semibold">A oferta</span>
+        <span className="text-xs uppercase tracking-[0.3em] text-oc-gold font-semibold">A oferta</span>
         <h2 className="font-display font-semibold mt-4 leading-[1.05]"
           style={{ fontSize: "clamp(2.2rem, 5vw, 4rem)" }}>
           Entre para o clube de quem recebe<br />
-          <span className="italic text-original-gold">semijoias com propósito</span>
+          <span className="italic text-oc-gold">semijoias com propósito</span>
         </h2>
         <p className="mt-8 text-lg text-white/75 leading-relaxed">
           Assine o Original Club e transforme o recebimento de semijoias em uma experiência mensal
@@ -518,17 +503,13 @@ function OfferSection() {
         </p>
         <div className="mt-10 flex flex-wrap gap-4 justify-center">
           <a href="#planos" className="btn-gold">Quero assinar o Original Club</a>
-          <a href="#curadoria" className="btn-ghost-gold !text-white !border-white/40 hover:!bg-white hover:!text-original-text">
+          <a href="#curadoria" className="btn-ghost-gold !text-white !border-white/40 hover:!bg-white hover:!text-oc-text">
             Responder meu perfil de estilo
           </a>
         </div>
       </div>
     </section>
   );
-}
-
-function FinalCTA() {
-  return null;
 }
 
 /* ============ FAQ ============ */
@@ -543,11 +524,11 @@ function FAQSection() {
     { q: "Posso dar feedback sobre as peças recebidas?", a: "Sim. A proposta inclui uma pesquisa NPS 7 dias após a entrega. Caso a nota seja baixa, o perfil pode ser revisado para melhorar os próximos envios." },
   ];
   return (
-    <section id="faq" className="section-pad bg-original-card/40 border-y border-original-border">
+    <section id="faq" className="section-pad bg-oc-card/40 border-y border-oc-border">
       <div className="container-oc max-w-3xl">
         <div className="mb-14 text-center">
           <SectionTitle eyebrow="FAQ" center>
-            Perguntas <span className="italic text-original-gold">frequentes</span>
+            Perguntas <span className="italic text-oc-gold">frequentes</span>
           </SectionTitle>
         </div>
         <div className="space-y-3">
@@ -555,9 +536,9 @@ function FAQSection() {
             <details key={f.q} className="card-oc !p-0 group [&[open]>summary>span:last-child]:rotate-45">
               <summary className="flex justify-between items-center gap-4 p-6 cursor-pointer font-display text-lg font-semibold list-none">
                 <span>{f.q}</span>
-                <span className="text-original-gold text-2xl font-light transition-transform">+</span>
+                <span className="text-oc-gold text-2xl font-light transition-transform">+</span>
               </summary>
-              <div className="px-6 pb-6 text-original-muted leading-relaxed">{f.a}</div>
+              <div className="px-6 pb-6 text-oc-muted leading-relaxed">{f.a}</div>
             </details>
           ))}
         </div>
@@ -578,14 +559,14 @@ function SignupForm() {
       <div className="container-oc max-w-2xl">
         <div className="mb-10 text-center">
           <SectionTitle eyebrow="Cadastro" center>
-            Reserve a sua <span className="italic text-original-gold">primeira caixa</span>
+            Reserve a sua <span className="italic text-oc-gold">primeira caixa</span>
           </SectionTitle>
         </div>
         {sent ? (
           <div className="card-oc text-center">
             <div className="editorial-number mb-4">✓</div>
             <h3 className="font-display text-2xl mb-3">Recebemos seu interesse no Original Club.</h3>
-            <p className="text-original-muted">Em breve nossa equipe entrará em contato para apresentar os planos e orientar sua assinatura.</p>
+            <p className="text-oc-muted">Em breve nossa equipe entrará em contato para apresentar os planos e orientar sua assinatura.</p>
           </div>
         ) : (
           <form onSubmit={onSubmit} className="card-oc space-y-4">
@@ -609,9 +590,9 @@ function SignupForm() {
 function Field({ label, name, type = "text", required = false }: { label: string; name: string; type?: string; required?: boolean }) {
   return (
     <label className="block">
-      <span className="text-sm font-medium text-original-text mb-1.5 block">{label}{required && <span className="text-original-gold"> *</span>}</span>
+      <span className="text-sm font-medium text-oc-text mb-1.5 block">{label}{required && <span className="text-oc-gold"> *</span>}</span>
       <input type={type} name={name} required={required}
-        className="w-full px-4 py-3 rounded-lg border border-original-border bg-original-bg focus:border-original-gold focus:outline-none transition-colors" />
+        className="w-full px-4 py-3 rounded-lg border border-oc-border bg-oc-bg text-oc-text focus:border-oc-gold focus:outline-none transition-colors" />
     </label>
   );
 }
@@ -619,8 +600,8 @@ function Field({ label, name, type = "text", required = false }: { label: string
 function SelectField({ label, name, options }: { label: string; name: string; options: string[] }) {
   return (
     <label className="block">
-      <span className="text-sm font-medium text-original-text mb-1.5 block">{label}</span>
-      <select name={name} className="w-full px-4 py-3 rounded-lg border border-original-border bg-original-bg focus:border-original-gold focus:outline-none transition-colors">
+      <span className="text-sm font-medium text-oc-text mb-1.5 block">{label}</span>
+      <select name={name} className="w-full px-4 py-3 rounded-lg border border-oc-border bg-oc-bg text-oc-text focus:border-oc-gold focus:outline-none transition-colors">
         <option value="">Selecione</option>
         {options.map((o) => <option key={o} value={o}>{o}</option>)}
       </select>
@@ -631,16 +612,12 @@ function SelectField({ label, name, options }: { label: string; name: string; op
 /* ============ FOOTER ============ */
 function Footer() {
   return (
-    <footer role="contentinfo" className="bg-original-text text-white/70 pt-16 pb-8">
+    <footer role="contentinfo" className="bg-oc-card text-white/70 pt-16 pb-8">
       <div className="container-oc">
         <div className="grid md:grid-cols-3 gap-10 mb-12">
           <div>
-            <div className="flex items-center gap-3 mb-4">
-              <img src="/logo.png" alt="Original Joias Logo" className="h-12 w-auto" />
-              <div>
-                
-              </div>
-            </div>
+            <div className="font-display text-2xl text-white font-semibold mb-1">Original Club</div>
+            <div className="text-xs uppercase tracking-widest text-oc-gold mb-4">by Original Joias</div>
             <p className="text-sm leading-relaxed">
               Clube de assinatura de semijoias direto da fábrica, com curadoria personalizada e edições colecionáveis.
             </p>
@@ -648,10 +625,10 @@ function Footer() {
           <div>
             <h4 className="text-white font-display text-lg mb-4">Navegação</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="#como-funciona" className="hover:text-original-gold">Como funciona</a></li>
-              <li><a href="#planos" className="hover:text-original-gold">Planos</a></li>
-              <li><a href="#curadoria" className="hover:text-original-gold">Curadoria</a></li>
-              <li><a href="#faq" className="hover:text-original-gold">FAQ</a></li>
+              <li><a href="#como-funciona" className="hover:text-oc-gold">Como funciona</a></li>
+              <li><a href="#planos" className="hover:text-oc-gold">Planos</a></li>
+              <li><a href="#curadoria" className="hover:text-oc-gold">Curadoria</a></li>
+              <li><a href="#faq" className="hover:text-oc-gold">FAQ</a></li>
             </ul>
           </div>
           <div>
@@ -691,7 +668,7 @@ function WhatsAppFloat() {
 
 function CTAFixoMobile() {
   return (
-    <div className="md:hidden fixed bottom-0 inset-x-0 z-40 bg-original-bg/95 backdrop-blur-md border-t border-original-border p-3">
+    <div className="md:hidden fixed bottom-0 inset-x-0 z-40 bg-oc-bg/95 backdrop-blur-md border-t border-oc-border p-3">
       <a href="#planos" className="btn-gold w-full !py-3">Quero assinar o Original Club</a>
     </div>
   );
@@ -709,7 +686,7 @@ function ScrollToTop() {
     <button
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       aria-label="Voltar ao topo"
-      className="fixed bottom-44 md:bottom-24 right-5 z-50 w-11 h-11 rounded-full bg-original-card border border-original-border text-original-gold flex items-center justify-center shadow-md hover:bg-original-gold hover:text-white transition-colors"
+      className="fixed bottom-44 md:bottom-24 right-5 z-50 w-11 h-11 rounded-full bg-oc-card border border-oc-border text-oc-gold flex items-center justify-center shadow-md hover:bg-oc-gold hover:text-white transition-colors"
     >
       ↑
     </button>
@@ -720,7 +697,7 @@ function ScrollToTop() {
 function SectionTitle({ children, eyebrow, center = false }: { children: ReactNode; eyebrow: string; center?: boolean }) {
   return (
     <div className={center ? "text-center" : ""}>
-      <span className="inline-block text-xs uppercase tracking-[0.25em] text-original-gold font-semibold mb-4">
+      <span className="inline-block text-xs uppercase tracking-[0.25em] text-oc-gold font-semibold mb-4">
         {eyebrow}
       </span>
       <h2 className="font-display font-semibold leading-[1.05] mb-6"

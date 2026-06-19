@@ -3,17 +3,18 @@
 @tailwind utilities;
 
 :root {
-  --oc-bg: #FAF7F2;
-  --oc-card: #FFFFFF;
-  --oc-gold: #B88A44;
-  --oc-gold-hover: #9C7134;
-  --oc-text: #1F1A17;
-  --oc-muted: #6F6258;
-  --oc-border: #E7DCCF;
-  --oc-separator: #D8C6B3;
-  --gradient-hero: linear-gradient(135deg, #FAF7F2 0%, #F1E6D8 48%, #E8D3B9 100%);
-  --shadow-elegant: 0 10px 40px -12px rgba(184, 138, 68, 0.25);
-  --shadow-card: 0 2px 12px -2px rgba(31, 26, 23, 0.06);
+  --oc-bg: #1F1A17;
+  --oc-card: #2A2320;
+  --oc-gold: #C9A05A;
+  --oc-gold-hover: #E0B870;
+  --oc-text: #FAF7F2;
+  --oc-muted: #B8AA9A;
+  --oc-border: #3D332C;
+  --oc-separator: #4A3E35;
+
+  --gradient-hero: linear-gradient(135deg, #1F1A17 0%, #2A2320 50%, #3D332C 100%);
+  --shadow-elegant: 0 10px 40px -12px rgba(201, 160, 90, 0.35);
+  --shadow-card: 0 2px 12px -2px rgba(0, 0, 0, 0.4);
 }
 
 @layer base {
@@ -44,13 +45,14 @@
     margin-inline: auto;
     padding-inline: 1.25rem;
   }
+
   .btn-gold {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
     background-color: var(--oc-gold);
-    color: #fff;
+    color: #FFFFFF;
     font-weight: 700;
     letter-spacing: 0.02em;
     padding: 1rem 1.75rem;
@@ -63,6 +65,7 @@
     background-color: var(--oc-gold-hover);
     transform: translateY(-2px) scale(1.02);
   }
+
   .btn-ghost-gold {
     display: inline-flex;
     align-items: center;
@@ -79,8 +82,9 @@
   }
   .btn-ghost-gold:hover {
     background-color: var(--oc-gold);
-    color: #fff;
+    color: #FFFFFF;
   }
+
   .editorial-number {
     font-family: 'Cormorant Garamond', Georgia, serif;
     font-size: clamp(3.5rem, 6vw, 5rem);
@@ -89,8 +93,14 @@
     line-height: 1;
     letter-spacing: -0.04em;
   }
-  .section-pad { padding-block: 4rem; }
-  @media (min-width: 768px) { .section-pad { padding-block: 6rem; } }
+
+  .section-pad {
+    padding-block: 4rem;
+  }
+  @media (min-width: 768px) {
+    .section-pad { padding-block: 6rem; }
+  }
+
   .card-oc {
     background-color: var(--oc-card);
     border: 1px solid var(--oc-border);
@@ -103,4 +113,6 @@
     transform: translateY(-4px);
     box-shadow: var(--shadow-elegant);
   }
+
+  .font-display { font-family: 'Cormorant Garamond', Georgia, serif; }
 }
