@@ -550,10 +550,27 @@ function FAQSection() {
 /* ============ SIGNUP FORM ============ */
 function SignupForm() {
   const [sent, setSent] = useState(false);
-  function onSubmit(e: FormEvent<HTMLFormElement>) {
+
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSent(true);
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      await fetch("SUA_URL_DO_APPS_SCRIPT_AQUI", {
+        method: "POST",
+        body: JSON.stringify(data),
+      });
+
+      setSent(true);
+      form.reset();
+    } catch (error) {
+      console.error("Erro ao enviar:", error);
+    }
   }
+
   return (
     <section id="cadastro" className="section-pad">
       <div className="container-oc max-w-2xl">
@@ -562,11 +579,16 @@ function SignupForm() {
             Reserve a sua <span className="italic text-oc-gold">primeira caixa</span>
           </SectionTitle>
         </div>
+
         {sent ? (
           <div className="card-oc text-center">
             <div className="editorial-number mb-4">✓</div>
-            <h3 className="font-display text-2xl mb-3">Recebemos seu interesse no Original Club.</h3>
-            <p className="text-oc-muted">Em breve nossa equipe entrará em contato para apresentar os planos e orientar sua assinatura.</p>
+            <h3 className="font-display text-2xl mb-3">
+              Recebemos seu interesse no Original Club.
+            </h3>
+            <p className="text-oc-muted">
+              Em breve nossa equipe entrará em contato.
+            </p>
           </div>
         ) : (
           <form onSubmit={onSubmit} className="card-oc space-y-4">
@@ -578,8 +600,12 @@ function SignupForm() {
               <SelectField label="Plano de interesse" name="plano" options={["Básico", "Plus", "Premium"]} />
               <SelectField label="Perfil de estilo" name="perfil" options={["Clássica", "Romântica", "Bold"]} />
             </div>
+
             <SelectField label="Acabamento preferido" name="acabamento" options={["Ródio Branco", "Ouro"]} />
-            <button type="submit" className="btn-gold w-full !mt-2">Quero garantir minha vaga</button>
+
+            <button type="submit" className="btn-gold w-full !mt-2">
+              Quero garantir minha vaga
+            </button>
           </form>
         )}
       </div>
@@ -587,23 +613,57 @@ function SignupForm() {
   );
 }
 
-function Field({ label, name, type = "text", required = false }: { label: string; name: string; type?: string; required?: boolean }) {
+function Field({
+  label,
+  name,
+  type = "text",
+  required = false,
+}: {
+  label: string;
+  name: string;
+  type?: string;
+  required?: boolean;
+}) {
   return (
     <label className="block">
-      <span className="text-sm font-medium text-oc-text mb-1.5 block">{label}{required && <span className="text-oc-gold"> *</span>}</span>
-      <input type={type} name={name} required={required}
-        className="w-full px-4 py-3 rounded-lg border border-oc-border bg-oc-bg text-oc-text focus:border-oc-gold focus:outline-none transition-colors" />
+      <span className="text-sm font-medium text-oc-text mb-1.5 block">
+        {label}
+        {required && <span className="text-oc-gold"> *</span>}
+      </span>
+      <input
+        type={type}
+        name={name}
+        required={required}
+        className="w-full px-4 py-3 rounded-lg border border-oc-border bg-oc-bg text-oc-text focus:border-oc-gold focus:outline-none transition-colors"
+      />
     </label>
   );
 }
 
-function SelectField({ label, name, options }: { label: string; name: string; options: string[] }) {
+function SelectField({
+  label,
+  name,
+  options,
+}: {
+  label: string;
+  name: string;
+  options: string[];
+}) {
   return (
     <label className="block">
-      <span className="text-sm font-medium text-oc-text mb-1.5 block">{label}</span>
-      <select name={name} className="w-full px-4 py-3 rounded-lg border border-oc-border bg-oc-bg text-oc-text focus:border-oc-gold focus:outline-none transition-colors">
+      <span className="text-sm font-medium text-oc-text mb-1.5 block">
+        {label}
+      </span>
+      <select
+        name={name}
+        className="w-full px-4 py-3 rounded-lg border border-oc-border bg-oc-bg text-oc-text focus:border-oc-gold focus:outline-none transition-colors"
+      >
         <option value="">Selecione</option>
-        {options.map((o) => <option key={o} value={o}>{o}</option>)}
+        {options.map((o) => (
+          <option key={o} value={o}>
+            {o}
+          </option>
+        ))}
       </select>
     </label>
   );
