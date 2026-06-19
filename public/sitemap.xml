@@ -1,0 +1,14 @@
+// app/sitemap.ts  (Next.js 13+ App Router)
+import { MetadataRoute } from 'next'
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  return [
+    {
+      url: 'https://originalclub.com.br',
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 1,
+    },
+    // adicione outras páginas aqui (planos, faq, sobre, etc.)
+  ]
+}
