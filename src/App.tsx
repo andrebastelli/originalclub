@@ -45,7 +45,14 @@ function Header() {
     >
       <div className="container-oc flex items-center justify-between py-4">
         <a href="#top" className="flex items-center gap-3">
-          <img src="/oj-logo.png" alt="Logo" className="h-20 w-auto" loading="lazy" />
+          <img
+            src="/oj-logo.png"
+            alt="Logo"
+            width="160"
+            height="80"
+            className="h-20 w-auto"
+            loading="lazy"
+          />
         </a>
         <nav role="navigation" className="hidden md:flex items-center gap-8 text-sm font-medium">
           <a href="#como-funciona" className="hover:text-oc-gold transition-colors">Como funciona</a>
@@ -677,7 +684,14 @@ function Footer() {
         <div className="grid md:grid-cols-3 gap-10 mb-12">
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <img src="/oj-logo.png" alt="Original Joias Logo" className="h-20 w-auto" loading="lazy" />
+              <img
+                src="/oj-logo.png"
+                alt="Original Joias Logo"
+                width="160"
+                height="80"
+                className="h-20 w-auto"
+                loading="lazy"
+              />
             </div>
             <p className="text-sm leading-relaxed">
               Clube de assinatura de semijoias direto da fábrica, com curadoria personalizada e edições colecionáveis.

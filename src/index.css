@@ -5,8 +5,8 @@
 :root {
   --oc-bg: #1F1A17;
   --oc-card: #2A2320;
-  --oc-gold: #C9A05A;
-  --oc-gold-hover: #E0B870;
+  --oc-gold: #B8925A;
+  --oc-gold-hover: #A67C3D;
   --oc-text: #FAF7F2;
   --oc-muted: #B8AA9A;
   --oc-border: #3D332C;
@@ -52,7 +52,7 @@
     justify-content: center;
     gap: 0.5rem;
     background-color: var(--oc-gold);
-    color: #FFFFFF;
+    color: #111111;
     font-weight: 700;
     letter-spacing: 0.02em;
     padding: 1rem 1.75rem;
@@ -64,6 +64,7 @@
   .btn-gold:hover {
     background-color: var(--oc-gold-hover);
     transform: translateY(-2px) scale(1.02);
+    color: #FFFFFF;
   }
 
   .btn-ghost-gold {
