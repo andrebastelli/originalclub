@@ -45,7 +45,7 @@ function Header() {
     > 
       <div className="container-oc flex items-center justify-between py-4">
         <a href="#top" className="flex items-center gap-3">
-          <img src="/oj-logo.png" alt="Logo" />
+          <img src="/oj-logo.png" alt="Logo" className="h-14 w-auto" />
         </a>
         <nav role="navigation" className="hidden md:flex items-center gap-8 text-sm font-medium">
           <a href="#como-funciona" className="hover:text-original-gold transition-colors">Como funciona</a>
