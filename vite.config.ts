@@ -9,11 +9,11 @@ export default defineConfig({
     },
   },
   server: {
-    allowedHosts: ['sb-icpungqpglu8.vercel.run'],
-    hmr: {
-      protocol: 'wss',
-      host: 'sb-icpungqpglu8.vercel.run',
-      port: 443,
-    },
+    host: true,
+    allowedHosts: true,
+  },
+  preview: {
+    host: true,
+    allowedHosts: true,
   },
 })

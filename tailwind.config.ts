@@ -1,19 +1,19 @@
 import type { Config } from 'tailwindcss'
 
-export default {
+const config: Config = {
   content: ['./index.html', './src/**/*.{ts,tsx}'],
   theme: {
     extend: {
       colors: {
-        original: {
-          bg: '#FAF7F2',
-          card: '#FFFFFF',
-          gold: '#B88A44',
-          goldHover: '#9C7134',
-          text: '#1F1A17',
-          muted: '#6F6258',
-          border: '#E7DCCF',
-          separator: '#D8C6B3',
+        oc: {
+          bg: '#1F1A17',
+          card: '#2A2320',
+          gold: '#C9A05A',
+          'gold-hover': '#E0B870',
+          text: '#FAF7F2',
+          muted: '#B8AA9A',
+          border: '#3D332C',
+          separator: '#4A3E35',
         },
       },
       fontFamily: {
@@ -21,10 +21,12 @@ export default {
         sans: ['Inter', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
-        elegant: '0 10px 40px -12px rgba(184, 138, 68, 0.25)',
-        card: '0 2px 12px -2px rgba(31, 26, 23, 0.06)',
+        elegant: '0 10px 40px -12px rgba(201, 160, 90, 0.35)',
+        card: '0 2px 12px -2px rgba(0, 0, 0, 0.4)',
       },
     },
   },
   plugins: [],
-} satisfies Config
+}
+
+export default config
