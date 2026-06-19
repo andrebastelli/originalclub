@@ -559,7 +559,7 @@ function SignupForm() {
     const data = Object.fromEntries(formData.entries());
 
     try {
-      await fetch("SUA_URL_DO_APPS_SCRIPT_AQUI", {
+      await fetch("https://script.google.com/macros/s/AKfycbxBH1eCb-lq4Rh6OmWMW23a0cmpVBTGmDYH-6waJ-JttWifsV57kMMqYLqa96CaFCUsVA/exec", {
         method: "POST",
         body: JSON.stringify(data),
       });
