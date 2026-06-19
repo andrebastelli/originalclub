@@ -500,7 +500,10 @@ function OfferSection() {
         </p>
         <div className="mt-10 flex flex-wrap gap-4 justify-center">
           <a href="#planos" className="btn-gold">Quero assinar o Original Club</a>
-          <a href="#curadoria" className="btn-ghost-gold !text-white !border-white/40 hover:!bg-white hover:!text-oc-text">
+          <a 
+            href="#curadoria" 
+            className="btn-ghost-gold !text-white !border-white/40 hover:!bg-white hover:!text-[#1F1A17] hover:!border-[#1F1A17]"
+          >
             Responder meu perfil de estilo
           </a>
         </div>
