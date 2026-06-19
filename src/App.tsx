@@ -45,7 +45,7 @@ function Header() {
     > 
       <div className="container-oc flex items-center justify-between py-4">
         <a href="#top" className="flex items-center gap-3">
-          <img src="/logo.png" alt="Logo" />
+          <img src="/oj-logo.png" alt="Logo" />
         </a>
         <nav role="navigation" className="hidden md:flex items-center gap-8 text-sm font-medium">
           <a href="#como-funciona" className="hover:text-original-gold transition-colors">Como funciona</a>
@@ -636,7 +636,7 @@ function Footer() {
         <div className="grid md:grid-cols-3 gap-10 mb-12">
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <img src="/logo.png" alt="Original Joias Logo" className="h-12 w-auto" />
+              <img src="/oj-logo.png" alt="Original Joias Logo" className="h-12 w-auto" />
               <div>
                 
               </div>
